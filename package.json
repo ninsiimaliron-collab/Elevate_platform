@@ -1,0 +1,12 @@
+{
+  "name": "valve-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c cyan,green \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "npm --prefix elevate-frontend run dev",
+    "dev:backend": "npm --prefix elevate-backend run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

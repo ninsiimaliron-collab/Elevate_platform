@@ -1,0 +1,2 @@
+-- Optional SQL seed placeholders. Primary seed logic is in seed.js to support env-based admin credentials.
+-- This file intentionally includes only static inserts if needed in SQL-only environments.
