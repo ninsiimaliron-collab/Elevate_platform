@@ -203,9 +203,11 @@ a {
   position: relative;
   overflow: hidden;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(20, 110, 95, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(13, 148, 136, 0.14) 0%, transparent 50%),
-    linear-gradient(160deg, #e1e8e6 0%, #cfe0db 60%, #b9d4cb 100%);
+    linear-gradient(rgba(20, 40, 34, 0.35), rgba(20, 40, 34, 0.5)),
+    url("/elevate_bg.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
