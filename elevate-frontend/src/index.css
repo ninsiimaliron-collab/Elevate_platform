@@ -203,7 +203,7 @@ a {
   position: relative;
   overflow: hidden;
   background-image:
-    linear-gradient(rgba(20, 40, 34, 0.35), rgba(20, 40, 34, 0.5)),
+    linear-gradient(rgba(20, 40, 34, 0.12), rgba(20, 40, 34, 0.22)),
     url("/elevate_bg.jpeg");
   background-size: cover;
   background-position: center;
