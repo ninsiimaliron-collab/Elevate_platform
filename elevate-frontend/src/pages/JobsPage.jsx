@@ -46,7 +46,7 @@ export default function JobsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [keyword, user?.role]);
 
   useEffect(() => {
     loadJobs(keyword);
