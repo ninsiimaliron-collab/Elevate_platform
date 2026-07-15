@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     }
     await loadUser();
     return data;
-  };
+  }, [loadUser]);
 
   const register = useCallback(async (payload) => {
     const res = await authApi.register(payload);
