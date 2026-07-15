@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { applicationsApi, jobsApi, pickData } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 
@@ -14,13 +14,14 @@ export default function JobsPage() {
   const [expandedJobId, setExpandedJobId] = useState(null);
   const [appliedJobIds, setAppliedJobIds] = useState([]);
 
-  const loadJobs = async () => {
+  const loadJobs = useCallback(async (searchKeyword = '') => {
+    const searchTerm = searchKeyword || keyword;
     setLoading(true);
     setError('');
     setSuccess('');
     try {
       const [jobsRes, myAppsRes] = await Promise.all([
-        jobsApi.list({ keyword: keyword || undefined }),
+        jobsApi.list({ keyword: searchTerm || undefined }),
         user?.role === 'youth' ? applicationsApi.my() : Promise.resolve(null)
       ]);
 
@@ -48,8 +49,8 @@ export default function JobsPage() {
   };
 
   useEffect(() => {
-    loadJobs();
-  }, [user?.role]);
+    loadJobs(keyword);
+  }, [user?.role, keyword, loadJobs]);
 
   const onSearch = (event) => {
     event.preventDefault();

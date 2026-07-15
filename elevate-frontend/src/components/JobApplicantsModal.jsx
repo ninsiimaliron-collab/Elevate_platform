@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { API_URL, applicationsApi, pickData } from '../lib/api';
 
 const statusColors = {
@@ -35,33 +35,8 @@ export default function JobApplicantsModal({ isOpen, onClose, job, onStatusUpdat
   const [success, setSuccess] = useState('');
   const [updatingId, setUpdatingId] = useState(null);
 
-  useEffect(() => {
-    if (isOpen && job) {
-      fetchApplicants('load');
-    }
-  }, [isOpen, job]);
-
-  useEffect(() => {
-    if (!success) {
-      return undefined;
-    }
-
-    const timer = setTimeout(() => {
-      setSuccess('');
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, [success]);
-
-  useEffect(() => {
-    if (selectedStatus === 'all') {
-      setFilteredApplicants(applicants);
-    } else {
-      setFilteredApplicants(applicants.filter((app) => app.status === selectedStatus));
-    }
-  }, [applicants, selectedStatus]);
-
-  const fetchApplicants = async (source = 'refresh') => {
+  const fetchApplicants = useCallback(async (source = 'refresh') => {
+    if (!job?.id) return;
     setLoading(true);
     setError('');
     try {
@@ -85,7 +60,33 @@ export default function JobApplicantsModal({ isOpen, onClose, job, onStatusUpdat
     } finally {
       setLoading(false);
     }
-  };
+  }, [job?.id, applicants.length]);
+
+  useEffect(() => {
+    if (isOpen && job) {
+      fetchApplicants('load');
+    }
+  }, [isOpen, job, fetchApplicants]);
+
+  useEffect(() => {
+    if (!success) {
+      return undefined;
+    }
+
+    const timer = setTimeout(() => {
+      setSuccess('');
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [success]);
+
+  useEffect(() => {
+    if (selectedStatus === 'all') {
+      setFilteredApplicants(applicants);
+    } else {
+      setFilteredApplicants(applicants.filter((app) => app.status === selectedStatus));
+    }
+  }, [applicants, selectedStatus]);
 
   const handleStatusChange = async (applicationId, newStatus) => {
     setUpdatingId(applicationId);

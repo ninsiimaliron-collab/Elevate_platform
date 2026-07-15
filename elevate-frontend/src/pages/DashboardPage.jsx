@@ -77,7 +77,7 @@ export default function DashboardPage() {
     };
 
     load();
-  }, [user]);
+  }, [user, profile?.company_name]);
   const handlePostJobSuccess = async () => {
     // Reload listings after job is posted
     try {

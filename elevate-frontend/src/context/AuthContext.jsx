@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
 import { authApi, pickData } from '../lib/api';
 
 const AuthContext = createContext(null);
@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [passwordResetRequired, setPasswordResetRequired] = useState(false);
 
-  const loadUser = async () => {
+  const loadUser = useCallback(async () => {
     const token = localStorage.getItem('elevate_access_token');
     if (!token) {
       setUser(null);
@@ -44,9 +44,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     loadUser();
-  }, []);
+  }, [loadUser]);
 
-  const login = async (email, password) => {
+  const login = useCallback(async (email, password) => {
     const res = await authApi.login({ email, password });
     const data = pickData(res);
     if (data?.accessToken) {
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
 
-  const register = async (payload) => {
+  const register = useCallback(async (payload) => {
     const res = await authApi.register(payload);
     const data = pickData(res);
     if (data?.accessToken) {
@@ -67,18 +67,18 @@ export const AuthProvider = ({ children }) => {
     }
     await loadUser();
     return data;
-  };
+  }, [loadUser]);
 
-  const refreshUser = async () => {
+  const refreshUser = useCallback(async () => {
     await loadUser();
-  };
+  }, [loadUser]);
 
-  const verifyAccount = async (password) => {
+  const verifyAccount = useCallback(async (password) => {
     const res = await authApi.verifyAccount({ password });
     const data = pickData(res);
     await loadUser();
     return data;
-  };
+  }, [loadUser]);
 
   const logout = () => {
     localStorage.removeItem('elevate_access_token');
@@ -102,7 +102,7 @@ export const AuthProvider = ({ children }) => {
       passwordResetRequired,
       clearPasswordResetRequired
     }),
-    [user, loading, passwordResetRequired]
+    [user, loading, passwordResetRequired, login, register, refreshUser, verifyAccount]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
