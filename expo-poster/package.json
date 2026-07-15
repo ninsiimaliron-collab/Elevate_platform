@@ -1,0 +1,11 @@
+{
+  "name": "elevate-expo-poster",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate-pdf": "node generate-pdf.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.4.1"
+  }
+}

@@ -1,0 +1,287 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #111827;
+  background: #f4f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #eef4ff 0%, #f8fafc 100%);
+}
+
+.poster-shell {
+  max-width: 1000px;
+  width: 100%;
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.hero-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 48px;
+  background: linear-gradient(135deg, #0f766e 0%, #0f4d92 100%);
+  color: white;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.77rem;
+  margin: 0 0 1rem;
+  color: #a7f3d0;
+}
+
+.hero-panel h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 4vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.hero-copy {
+  margin: 24px 0 0;
+  max-width: 42rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #d7f0e8;
+}
+
+.hero-badge {
+  padding: 28px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.badge-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin: 0 0 1rem;
+  color: #d7f0e8;
+}
+
+.hero-badge ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.hero-badge li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hero-badge li::before {
+  content: '•';
+  color: #0df6be;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.section-block {
+  padding: 40px 48px;
+}
+
+.focus-grid,
+.metrics-grid,
+.why-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.focus-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.feature-card,
+.metric-card,
+.why-card,
+.cta-panel {
+  border-radius: 28px;
+  background: white;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 20px 35px rgba(15, 23, 42, 0.06);
+}
+
+.feature-card,
+.why-card {
+  padding: 28px;
+}
+
+.feature-card h2,
+.why-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.feature-card p,
+.why-card p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #334155;
+}
+
+.metrics-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric-card {
+  padding: 32px;
+  text-align: center;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.metric-value {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #0f4d92;
+}
+
+.metric-label {
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  color: #475569;
+}
+
+.why-grid {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.why-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.why-card li {
+  padding-left: 1.1rem;
+  position: relative;
+  color: #475569;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.why-card li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  color: #0f766e;
+  font-size: 0.95rem;
+}
+
+.cta-panel {
+  padding: 40px;
+  text-align: center;
+  background: #eff6ff;
+}
+
+.cta-panel h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.cta-panel p {
+  margin: 0 auto 1.75rem;
+  max-width: 38rem;
+  color: #334155;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.cta-pill {
+  display: inline-flex;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  background: #0f766e;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.footer-note {
+  padding: 30px 48px 48px;
+  color: #64748b;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+@media print {
+  body {
+    background: #eef4ff;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .poster-shell {
+    box-shadow: none;
+    border: none;
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .hero-panel,
+  .cta-panel,
+  .metric-card,
+  .feature-card,
+  .why-card {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .hero-panel {
+    background-color: #0f766e;
+    background-image: none;
+  }
+}
+
+@media (max-width: 880px) {
+  .hero-panel {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+
+  .section-block {
+    padding: 32px 28px;
+  }
+
+  .focus-grid,
+  .metrics-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
