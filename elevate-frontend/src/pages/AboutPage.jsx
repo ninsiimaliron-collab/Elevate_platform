@@ -24,10 +24,10 @@ const values = [
 ];
 
 const team = [
-  { name: 'Sarah Okonkwo', role: 'Co-Founder & CEO', bio: 'HR technologist with 8+ years in talent acquisition.' },
-  { name: 'James Mwangi', role: 'Co-Founder & CTO', bio: 'Full-stack engineer passionate about accessible platforms.' },
+  { name: 'Ninsiima Kevin', role: 'Co-Founder & CEO', bio: 'HR technologist with 8+ years in talent acquisition.' },
+  { name: 'Erima John', role: 'Co-Founder & CTO', bio: 'Full-stack engineer passionate about accessible platforms.' },
   { name: 'Amina Sseninde', role: 'Head of Partnerships', bio: 'Community builder connecting employers and youth networks.' },
-  { name: 'David Okello', role: 'Career Counselor Lead', bio: 'Educational background guiding resource strategy.' }
+  { name: 'David Loku', role: 'Career Counselor Lead', bio: 'Educational background guiding resource strategy.' }
 ];
 
 export default function AboutPage() {
